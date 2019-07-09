@@ -50,7 +50,7 @@ So far, we have described the persistence for strictly the transaction only.  In
 
 Transactions that get executed will cost at least an additional 352 bytes of persistence to store the transaction info, plus extra bytes for RLP-encoding.  
 
-In order to augment the storage to accommodate storing a beacon block hash, only the transaction representation (inside _block_ database) needs to change.  Specifically, an additional element needs to be added to the encoded RLP list to represent the beacon hash.  It will be either the value `0` (if transaction didn't have beacon hash) or a 32-byte block hash (the transaction block hash).  Therefore, after the proposed change, transactions using this feature will be 32 bytes (not including any RLP characters needed to form a valid encoding).  Transactions not using this feature will be 1 byte larger.
+In order to augment the storage to accommodate storing a beacon block hash, only the transaction representation (inside _block_ database) needs to change.  Specifically, an additional element needs to be added to the encoded RLP list to represent the beacon hash.  It will be either the value `0` (if transaction didn't have beacon hash) or a 32-byte block hash (the transaction block hash).  Therefore, after the proposed change, transactions using this feature will be 32 bytes larger (not including any RLP characters needed to form a valid encoding).  Transactions not using this feature will be 1 byte larger.
 
 Comparison of transaction sizes before and after this AIP, if we assume that the transaction info is at the smallest possible size:
 
